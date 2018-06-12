@@ -22,7 +22,7 @@ class Iris{
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner in;
+		Scanner in, inner;
 		
 		ArrayList<Iris> dane = new ArrayList<Iris>();
 
@@ -34,13 +34,17 @@ public class Main {
             return;
         }
         double sl,sw,pl,pw;
-        String typ;
+        String typ, line;
         while(in.hasNext()) {
-        	sl = in.nextDouble();
-        	sw = in.nextDouble();
-        	pl = in.nextDouble();
-        	pw = in.nextDouble();
-        	typ = in.next();
+        	line = in.nextLine();
+        	line = line.replace(',', ' ');
+        	line = line.replace('.', ',');
+        	inner = new Scanner(line);
+        	sl = inner.nextDouble();
+        	sw = inner.nextDouble();
+        	pl = inner.nextDouble();
+        	pw = inner.nextDouble();
+        	typ = inner.next();
         	dane.add(new Iris(sl,sw,pl,pw,typ));
         }
         
@@ -58,7 +62,13 @@ public class Main {
             return;
         }
         
-        //Wypisywanie danych do pliku
+        for(Iris i : dane) {
+        	out.println(i.sepalLength + ", " 
+        				+ i.sepalWidth + ", " 
+        				+ i.petalLength + ", " 
+        				+ i.petalWidth + ", "
+        				+ i.type);
+        }
         out.close();
         System.out.println("Już");
 
