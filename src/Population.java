@@ -6,9 +6,9 @@ public class Population {
 	private ArrayList<Creature> population = new ArrayList<>();
 	private int counter = 0;
 	
-	public Population(int size) {
+	public Population(int size, String target) {
 		for(int i = 0; i < size; i++) {
-			population.add(new Creature());
+			population.add(new Creature(target));
 		}
 	}
 	

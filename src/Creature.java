@@ -3,12 +3,17 @@ import java.util.Random;
 public class Creature implements Comparable<Creature>{
 	private static final Random R = new Random();
 	private final String genes;
-	private static String TARGET = " Insanity: doing the same thing over and over again and expecting different results. -Albert Einstein";
+	private static String TARGET = "Insanity: doing the same thing over and over again and expecting different results. -Albert Einstein";
 	private static double mutationRate = 0.02;
 	private double fitness;
 	private boolean hasNotLivedYet = true;
-	public Creature() {
+	
+	public Creature(String target) {
 		StringBuilder sb = new StringBuilder();
+		String defaultString = "Default";
+		
+		if(!target.equals(defaultString))
+			TARGET = target;
 		for (int i = 0; i<TARGET.length(); i++) {
 			sb.append(generateRandomGene());
 		}
